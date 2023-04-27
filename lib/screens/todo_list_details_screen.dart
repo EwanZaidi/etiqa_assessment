@@ -227,7 +227,10 @@ class _TodoDetailsScreenState extends State<TodoDetailsScreen> {
         }
       });
     } else {
-      print("Date is not selected");
+      const snackBar = SnackBar(
+        content: Text('Date is not selected'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }
