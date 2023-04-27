@@ -1,17 +1,20 @@
 class Todo {
+  String id;
   String title;
   String startDate;
   String endDate;
   bool completed;
 
   Todo(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.startDate,
       required this.endDate,
       required this.completed});
 
   factory Todo.fromJson(Map<String, dynamic> data) {
     return Todo(
+        id: data['_id'],
         title: data['title'],
         startDate: data['startDate'],
         endDate: data['endDate'],

@@ -81,27 +81,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                                   children: [
                                     Flexible(
                                       child: Text(
-                                        todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title +
-                                            todo.title,
+                                        todo.title,
                                         maxLines: 2,
                                         textAlign: TextAlign.start,
                                         overflow: TextOverflow.ellipsis,

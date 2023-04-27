@@ -130,20 +130,58 @@ class _TodoDetailsScreenState extends State<TodoDetailsScreen> {
     );
   }
 
+  String idGenerator() {
+    final now = DateTime.now();
+    return now.microsecondsSinceEpoch.toString();
+  }
+
   _submit() {
     if (!_formKey.currentState!.validate()) {
       return;
     }
 
-    Todo todo = Todo(
-        title: _titleC.text,
-        startDate: _startDate!.toLocal().toIso8601String(),
-        endDate: _endDate!.toLocal().toIso8601String(),
-        completed: false);
+    if (widget.todo == null) {
+      Todo todo = Todo(
+          id: idGenerator(),
+          title: _titleC.text,
+          startDate: _startDate!.toLocal().toIso8601String(),
+          endDate: _endDate!.toLocal().toIso8601String(),
+          completed: false);
+      var result = contoller.addItemInList(todo);
 
-    contoller.addItemInList(todo);
-
-    Navigator.pop(context);
+      if (result) {
+        const snackBar = SnackBar(
+          content: Text('To-Do added succesfully'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.pop(context);
+      } else {
+        const snackBar = SnackBar(
+          content: Text('Error while adding To-Do'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    } else {
+      Todo todo = Todo(
+          id: widget.todo!.id,
+          title: _titleC.text,
+          startDate: _startDate!.toLocal().toIso8601String(),
+          endDate: _endDate!.toLocal().toIso8601String(),
+          completed: false);
+      var result = contoller.updateItemInList(todo);
+      if (result) {
+        const snackBar = SnackBar(
+          content: Text('To-Do update succesfully'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.pop(context);
+      } else {
+        const snackBar = SnackBar(
+          content: Text('Error while updating To-Do'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
   }
 
   _showDatePicker(String whatDate) async {
