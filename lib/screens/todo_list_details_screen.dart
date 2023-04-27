@@ -61,7 +61,7 @@ class _TodoDetailsScreenState extends State<TodoDetailsScreen> {
             ),
           ),
           onPressed: _submit,
-          child: const Text('Continue'),
+          child: const Text('Create Now'),
         ),
       ),
       body: Form(
