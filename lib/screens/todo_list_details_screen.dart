@@ -61,7 +61,7 @@ class _TodoDetailsScreenState extends State<TodoDetailsScreen> {
             ),
           ),
           onPressed: _submit,
-          child: const Text('Create Now'),
+          child: Text(widget.todo == null ? 'Create Now' : "Update To-Do"),
         ),
       ),
       body: Form(
